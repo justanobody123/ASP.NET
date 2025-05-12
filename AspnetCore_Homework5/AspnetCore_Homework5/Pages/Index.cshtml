@@ -1,0 +1,27 @@
+﻿@page
+@using System.Globalization
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Добро пожаловать!</h1>
+<h2>Текущее время: @(DateTime.Now.ToShortTimeString())</h2>
+
+<p>Дата и время @DateTime.Now</p>
+<p>Текущий день: @DateTime.Now.DayOfYear</p>
+
+@{
+    CultureInfo cultureInfo = new CultureInfo("en-US", false);
+
+    DateTime currentDateTime = DateTime.Now;
+    string dayOfWeek = cultureInfo.DateTimeFormat.GetDayName(currentDateTime.DayOfWeek);
+}
+
+<p>День недели: @dayOfWeek</p>
+
+@{
+    Random random = new Random();
+    int randomInteger = random.Next(1000);
+}
+<span>Случайное число: @randomInteger</span>
