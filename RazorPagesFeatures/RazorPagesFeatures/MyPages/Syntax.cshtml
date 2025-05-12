@@ -1,4 +1,130 @@
 ﻿@page
 @model RazorPagesFeatures.MyPages.SyntaxModel
+
+<h1>Привет, мир!</h1>
+
+@*Комментарий*@
+<p>@@Username</p>
+
+<a href="mailto:example@mail.com"></a>
 @{
+	string simpleText = "Привет, мир!";
 }
+<h2>@simpleText</h2>
+@{
+	void DisplayName(string name)
+	{
+		<p>Name: <b></b></p>
+	}
+}
+<h3>
+	@{
+		void DisplayNameAsText(string name)
+		{
+			@:My name is @name
+		}
+		DisplayNameAsText("Bob");
+	}
+</h3>
+
+<hr />
+
+@{
+	int dayOfYear = DateTime.Now.DayOfYear;
+}
+
+<p>День: @dayOfYear</p>
+
+@if (dayOfYear % 2 == 0)
+{
+	<p>
+		День <b>четный</b>
+	</p>
+}
+else
+{
+	<p>
+		День <b>нечетный</b>
+	</p>
+}
+
+@{
+	int number = 1;
+}
+<hr />
+<p>Число: @number</p>
+@if (number >= 0 && number % 2 == 0)
+{
+	<p>Число положительное и четное</p>
+}
+else if (number < 0)
+{
+	<p>Число отрицательное</p>
+}
+else
+{
+	<p>Текст из блока else</p>
+}
+@switch(number)
+{
+	case 0:
+		<p>Число - ноль</p>
+		break;
+	case -100:
+		<p>Число - минус сто</p>
+		break;
+	default:
+		<p>Ни одно условие не выполнилось</p>
+		break;
+}
+@for(int i = 0; i < 32; i++)
+{
+	<p>i = @i</p>
+}
+@{
+	List<string> names = new List<string>() { "Tom", "Bob", "123" };
+}
+
+<h3>for:</h3>
+
+@for (int i = 0; i < names.Count; i++)
+{
+	<p>Name: @names[i]</p>
+}
+<hr />
+<h3>foreach:</h3>
+@foreach (string name in names)
+{
+	<p>Name: @name</p>
+}
+<hr />
+<h3>while:</h3>
+@{
+	int count = 30;
+}
+@while(count > 0)
+{
+	if (count % 2 != 0)
+		break;
+	<p>Count: @count</p>
+	count--;
+}
+<hr />
+<h3>do while:</h3>
+@do
+{
+	<p>Count: @count</p>
+	count--;
+} while(count > 0);
+@functions
+{
+	class Person
+	{
+		public required string Name { get; set; }
+	}
+}
+@{
+	Person person = new Person() { Name = "Tom" };
+}
+<hr />
+<p>Person's name: @person.Name</p></>]
