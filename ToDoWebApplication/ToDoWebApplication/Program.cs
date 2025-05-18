@@ -1,3 +1,6 @@
+using ToDoWebApplication.Services;
+using ToDoWebApplication.Services.Implementations;
+
 namespace ToDoWebApplication
 {
 	public class Program
@@ -9,6 +12,8 @@ namespace ToDoWebApplication
 			// Add services to the container.
 			builder.Services.AddRazorPages();
 
+			//Register service
+			builder.Services.AddScoped<ITaskService, TaskService>();
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
