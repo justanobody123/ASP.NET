@@ -8,7 +8,7 @@ namespace ToDoWebApplication.Services.Implementations
 		public List<UserTask> GetTasks()
 		{
 			return new List<UserTask>() {
-				new UserTask() {Title = "Frist Task", Description = "Description"}
+				new UserTask() {Title = "First Task", Description = "Description"}
 			};
 		}
 	}
